@@ -1,0 +1,118 @@
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PortfolioService } from '../../core/services/portfolio.service';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
+import { AppIconComponent } from '../../shared/components/app-icon/app-icon.component';
+
+@Component({
+  selector: 'app-academics',
+  standalone: true,
+  imports: [CommonModule, SectionTitleComponent, AppIconComponent],
+  template: `
+    <section id="academics" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-slate-300/80 bg-white/70 relative">
+      <div class="max-w-4xl mx-auto space-y-6">
+        
+        <!-- Header -->
+        <app-section-title
+          badge="Academics &amp; Journey"
+          title="Education &amp; Credentials">
+        </app-section-title>
+
+        <div class="space-y-4">
+          
+          <!-- Card 1: Academic Degree -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-300 shadow-xs space-y-3">
+            <div class="pb-3 border-b border-slate-100">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 font-mono-code">
+                Academic Degree
+              </h3>
+            </div>
+
+            <div class="flex items-start sm:items-center justify-between gap-3 sm:gap-4">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-700 border border-sky-200/80 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                  <app-icon [name]="degree().icon" cssClass="w-4 h-4"></app-icon>
+                </div>
+                <div class="min-w-0">
+                  <div class="font-bold text-slate-900 text-sm sm:text-base leading-snug">
+                    {{ degree().title }} <span class="text-slate-400 font-normal">&bull;</span> <span class="text-amber-700 font-semibold">{{ degree().rank }}</span> <span class="text-slate-400 font-normal">&bull;</span> <span class="text-emerald-700 font-semibold">GPA: {{ degree().gpa }}</span>
+                  </div>
+                  <div class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                    {{ degree().university }} &bull; {{ degree().faculty }} &bull; {{ degree().honors }}
+                  </div>
+                </div>
+              </div>
+              <span class="text-xs font-mono-code text-slate-500 tabular-nums shrink-0 font-medium w-20 sm:w-28 text-right">
+                {{ degree().period }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 2: Certifications & Credentials -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-300 shadow-xs space-y-3">
+            <div class="pb-3 border-b border-slate-100">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 font-mono-code">
+                Certifications &amp; Credentials
+              </h3>
+            </div>
+
+            <div class="space-y-3">
+              @for (cert of certifications(); track cert.title; let isLast = $last) {
+                <div class="flex items-start sm:items-center justify-between gap-3 sm:gap-4" [ngClass]="{'pb-3 border-b border-slate-100/80': !isLast}">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                      <app-icon [name]="cert.icon" cssClass="w-4 h-4"></app-icon>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-bold text-slate-900 text-sm leading-snug">{{ cert.title }}</div>
+                      <div class="text-xs text-slate-500 mt-0.5 leading-relaxed">{{ cert.issuer }} &bull; {{ cert.details }}</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono-code text-slate-500 tabular-nums shrink-0 font-medium w-20 sm:w-28 text-right">
+                    {{ cert.date }}
+                  </span>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Card 3: Honors & Contests -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-300 shadow-xs space-y-3">
+            <div class="pb-3 border-b border-slate-100">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 font-mono-code">
+                Honors &amp; Contests
+              </h3>
+            </div>
+
+            <div class="space-y-3">
+              @for (honor of honors(); track honor.title; let isLast = $last) {
+                <div class="flex items-start sm:items-center justify-between gap-3 sm:gap-4" [ngClass]="{'pb-3 border-b border-slate-100/80': !isLast}">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 border border-slate-200/80 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                      <app-icon [name]="honor.icon" cssClass="w-4 h-4"></app-icon>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-bold text-slate-900 text-sm leading-snug">{{ honor.title }}</div>
+                      <div class="text-xs text-slate-500 mt-0.5 leading-relaxed">{{ honor.details }}</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono-code text-slate-500 tabular-nums shrink-0 font-medium w-20 sm:w-28 text-right">
+                    {{ honor.date }}
+                  </span>
+                </div>
+              }
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  `
+})
+export class AcademicsComponent {
+  private portfolioService = inject(PortfolioService);
+  readonly degree = this.portfolioService.degree;
+  readonly certifications = this.portfolioService.certifications;
+  readonly honors = this.portfolioService.honors;
+}

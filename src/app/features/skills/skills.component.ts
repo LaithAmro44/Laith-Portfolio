@@ -1,0 +1,61 @@
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PortfolioService } from '../../core/services/portfolio.service';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
+import { AppIconComponent } from '../../shared/components/app-icon/app-icon.component';
+
+@Component({
+  selector: 'app-skills',
+  standalone: true,
+  imports: [CommonModule, SectionTitleComponent, AppIconComponent],
+  template: `
+    <section id="skills" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-slate-300/80 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Header -->
+        <app-section-title
+          badge="Technical Proficiency"
+          title="Core Technology Stack">
+        </app-section-title>
+
+        <!-- 6 Structured Category Cards in Balanced 2-Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+          @for (cat of categories(); track cat.id) {
+            <div class="spotlight-card p-5 sm:p-6 rounded-2xl bg-white border border-slate-300 space-y-5 flex flex-col justify-start shadow-xs hover:border-sky-400 transition duration-200">
+              <div class="space-y-3 relative z-10">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-200">
+                  <div class="w-10 h-10 rounded-xl bg-sky-50 border border-sky-200 text-sky-600 flex items-center justify-center shrink-0 shadow-2xs">
+                    <app-icon [name]="cat.icon" cssClass="w-5 h-5"></app-icon>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-bold text-slate-900 leading-tight">{{ cat.title }}</h3>
+                    <span class="text-[11px] text-slate-500 font-mono-code">{{ cat.subtitle }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Structured 2-Column Subgrid of Micro-Tiles -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 relative z-10">
+                @for (skill of cat.skills; track skill.name) {
+                  <div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200/90 hover:border-sky-400 hover:bg-sky-50/50 hover:shadow-2xs transition duration-150 group">
+                    <div class="w-5 h-5 shrink-0 flex items-center justify-center">
+                      <app-icon [name]="skill.icon" cssClass="w-4 h-4"></app-icon>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-800 group-hover:text-sky-950 truncate">
+                      {{ skill.name }}
+                    </span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+      </div>
+    </section>
+  `
+})
+export class SkillsComponent {
+  private portfolioService = inject(PortfolioService);
+  readonly categories = this.portfolioService.skillCategories;
+}
