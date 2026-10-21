@@ -6,7 +6,7 @@ import {
   SDLC_STEPS,
   OUTCOME_CARDS,
   SKILL_CATEGORIES,
-  WORK_EXPERIENCES,
+  WORK_EXPERIENCE,
   PROJECTS,
   ACADEMIC_DEGREE,
   CERTIFICATIONS,
@@ -18,14 +18,18 @@ import {
 })
 export class PortfolioService {
   readonly hero = signal(HERO_DATA);
-  readonly socials = signal(SOCIAL_LINKS);
+  readonly socialLinks = signal(SOCIAL_LINKS);
+  readonly socials = this.socialLinks;
   readonly navLinks = signal(NAV_LINKS);
   readonly sdlcSteps = signal(SDLC_STEPS);
   readonly outcomeCards = signal(OUTCOME_CARDS);
   readonly skillCategories = signal(SKILL_CATEGORIES);
-  readonly experiences = signal(WORK_EXPERIENCES);
+  readonly workExperience = signal(WORK_EXPERIENCE);
+  readonly experiences = this.workExperience;
   readonly projects = signal(PROJECTS);
-  readonly degree = signal(ACADEMIC_DEGREE);
+  readonly academicDegree = signal(ACADEMIC_DEGREE);
+  readonly degree = this.academicDegree;
   readonly certifications = signal(CERTIFICATIONS);
-  readonly honors = signal(HONORS_CONTESTS);
+  readonly honorsContests = signal(HONORS_CONTESTS);
+  readonly honors = this.honorsContests;
 }

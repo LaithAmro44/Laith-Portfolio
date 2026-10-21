@@ -1,0 +1,80 @@
+<section id="projects" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-slate-300/80 relative">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Header: Centered & Clean like Sections 2, 3, 4 -->
+    <div class="text-center max-w-2xl mx-auto space-y-2 mb-10">
+      <div class="text-xs font-mono-code uppercase tracking-widest text-sky-700 font-bold">Portfolio &amp; Code</div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Projects &amp; Repositories
+      </h2>
+    </div>
+
+    <!-- 12 Real Projects in Symmetrical 2-Column Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="projectsGrid">
+      @for (project of projects(); track project.title) {
+        <div class="project-card spotlight-card p-6 rounded-2xl bg-white border border-slate-300 space-y-4 flex flex-col justify-between shadow-sm hover:border-sky-400 hover:shadow-md transition duration-200">
+          <div class="space-y-3 relative z-10">
+            
+            <!-- Category Badge & Organization -->
+            <div class="flex items-center justify-between text-xs font-mono-code">
+              <span [class]="'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold border ' + project.categoryBadgeColor">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                {{ project.categoryBadge }}
+              </span>
+              <span class="text-xs font-bold text-slate-500 font-mono-code">{{ project.org }}</span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-lg font-bold text-slate-900 leading-snug">
+              {{ project.title }}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              {{ project.description }}
+            </p>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              @for (tag of project.tags; track tag.name) {
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-50 border border-slate-200/90 text-slate-800 font-mono-code text-xs font-medium">
+                  <app-icon [name]="tag.icon" cssClass="w-3.5 h-3.5"></app-icon>
+                  {{ tag.name }}
+                </span>
+              }
+            </div>
+
+          </div>
+
+          <!-- Links Bar (if any) -->
+          @if (project.githubUrl || project.liveUrl) {
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2 relative z-10">
+              <div class="flex items-center gap-2">
+                @if (project.githubUrl) {
+                  <a
+                    [href]="project.githubUrl"
+                    target="_blank"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition shadow-xs">
+                    <app-icon name="github" cssClass="w-3.5 h-3.5"></app-icon>
+                    View Code on GitHub
+                  </a>
+                }
+              </div>
+
+              @if (project.liveUrl) {
+                <a
+                  [href]="project.liveUrl"
+                  target="_blank"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-600 text-white text-xs font-bold hover:bg-sky-700 transition shadow-xs">
+                  <app-icon name="external-link" cssClass="w-3.5 h-3.5"></app-icon>
+                  Live Demo
+                </a>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

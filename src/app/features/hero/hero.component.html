@@ -1,0 +1,132 @@
+<section id="hero" class="relative pt-16 sm:pt-20 pb-14 sm:pb-16 px-4 sm:px-6 overflow-hidden">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <!-- Left Column: Bio & Intro -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]">
+              {{ hero().name }}
+            </h1>
+            <span class="inline-flex items-center text-[#0077b5] shrink-0" title="LinkedIn Verified Professional">
+              <app-icon name="verified" cssClass="w-8 h-8 sm:w-10 sm:h-10"></app-icon>
+            </span>
+          </div>
+
+          <!-- Professional Roles & Core Stack Chips -->
+          <div class="mt-4 flex flex-wrap items-center gap-2 sm:gap-2.5">
+            
+            <!-- Role: Full Stack Software Engineer -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs sm:text-sm font-bold shadow-xs hover:border-sky-400 transition">
+              <span class="w-2.5 h-2.5 rounded-full bg-sky-600 shrink-0 ring-4 ring-sky-100"></span>
+              <span>{{ hero().title }}</span>
+            </div>
+
+            <!-- Stack 1: ASP.NET Core -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs sm:text-sm font-mono-code font-bold shadow-xs hover:border-purple-400 transition">
+              <app-icon name="dotnet" cssClass="w-4 h-4 shrink-0"></app-icon>
+              <span>ASP.NET Core</span>
+            </div>
+
+            <!-- Stack 2: ABP Framework -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs sm:text-sm font-mono-code font-bold shadow-xs hover:border-[#B84297] transition">
+              <app-icon name="abp" cssClass="w-4 h-4 shrink-0"></app-icon>
+              <span>ABP Framework</span>
+            </div>
+
+            <!-- Stack 3: Angular -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs sm:text-sm font-mono-code font-bold shadow-xs hover:border-red-400 transition">
+              <app-icon name="angular" cssClass="w-4 h-4 shrink-0"></app-icon>
+              <span>Angular</span>
+            </div>
+
+            <!-- Stack 4: Database -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 text-xs sm:text-sm font-mono-code font-bold shadow-xs hover:border-[#0284c7] transition">
+              <app-icon name="database" cssClass="w-4 h-4 shrink-0 text-[#0284c7]"></app-icon>
+              <span>Database</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Actions: Direct Download CV + Quick Contact & Code Icons -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a
+            [href]="hero().cvFileName"
+            target="_blank"
+            [download]="hero().cvFileName"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-xs bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/25 transition-all duration-200 hover:-translate-y-0.5">
+            <app-icon name="download" cssClass="w-4 h-4"></app-icon>
+            Download CV (PDF)
+          </a>
+
+          <div class="flex items-center gap-2 pl-1">
+            <a
+              href="https://github.com/LaithAmro44"
+              target="_blank"
+              class="p-3 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-slate-900 hover:border-sky-500 shadow-sm transition hover:-translate-y-0.5"
+              title="View GitHub Repositories">
+              <app-icon name="github" cssClass="w-4 h-4"></app-icon>
+            </a>
+            <a
+              href="mailto:laithamroq@gmail.com"
+              class="p-3 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-slate-900 hover:border-sky-500 shadow-sm transition hover:-translate-y-0.5"
+              title="Direct Email">
+              <app-icon name="email" cssClass="w-4 h-4"></app-icon>
+            </a>
+            <a
+              href="tel:+962777492113"
+              class="p-3 rounded-xl bg-white border border-slate-300 text-slate-700 hover:text-slate-900 hover:border-sky-500 shadow-sm transition hover:-translate-y-0.5"
+              title="Direct Phone (+962 777 492 113)">
+              <app-icon name="phone" cssClass="w-4 h-4"></app-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Profile Card (Prominent Centered Photo) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div id="heroProfileCard" class="w-full max-w-sm floating-card">
+          <div class="rounded-3xl p-1 bg-gradient-to-b from-sky-200 via-slate-200 to-slate-300 shadow-xl">
+            <div class="spotlight-card rounded-[22px] bg-white p-6 sm:p-7 border border-slate-200 relative flex flex-col items-center text-center justify-between space-y-5">
+              
+              <!-- Top: Large Centered Photo + Current Role -->
+              <div class="flex flex-col items-center w-full relative z-10">
+                <div class="relative mb-3">
+                  <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-tr from-sky-400 to-blue-600 opacity-25 blur-sm"></div>
+                  <img
+                    [src]="hero().avatarUrl"
+                    [alt]="hero().linkedInDisplayName"
+                    class="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl object-cover ring-4 ring-white shadow-xl">
+                  <span class="absolute -bottom-2 right-1/2 translate-x-1/2 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold tracking-wide shadow-md flex items-center gap-1 border-2 border-white">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    {{ hero().activeStatus }}
+                  </span>
+                </div>
+
+                <div class="text-xs sm:text-sm text-sky-700 font-bold font-mono-code mt-1">
+                  {{ hero().currentRoleText }}
+                </div>
+              </div>
+
+              <!-- Bottom: Centered LinkedIn Link displaying "Laith Q. Amro" -->
+              <div class="w-full relative z-10 pt-3 border-t border-slate-200/80">
+                <a
+                  [href]="hero().linkedInUrl"
+                  target="_blank"
+                  class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/10 hover:bg-[#0077b5]/15 border border-[#0077b5]/30 text-[#0077b5] font-bold text-xs transition duration-200 group shadow-xs">
+                  <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.65 1.65 0 1 0 1.65 1.65A1.66 1.66 0 0 0 7.83 6.6Z"/></svg>
+                  <span>{{ hero().linkedInDisplayName }}</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

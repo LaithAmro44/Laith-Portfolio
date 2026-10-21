@@ -1,6 +1,7 @@
 import {
   AcademicDegree,
   Certification,
+  HeroData,
   HonorContest,
   NavSection,
   OutcomeCard,
@@ -11,24 +12,22 @@ import {
   WorkExperience
 } from '../models/portfolio.models';
 
-export const HERO_DATA = {
+export const HERO_DATA: HeroData = {
   name: 'Laith Qasem Amro',
   title: 'Full Stack Software Engineer',
-  subtitle: 'ASP.NET Core | ABP Framework | Angular Micro-Frontends',
-  statusText: 'Available for Hire',
+  subtitle: 'Computer Engineer',
+  activeStatus: 'ACTIVE',
+  currentRoleText: 'Software Engineer at ITG',
   avatarUrl: 'https://avatars.githubusercontent.com/u/147944575',
+  linkedInUrl: 'https://www.linkedin.com/in/laith-amro/',
+  linkedInDisplayName: 'Laith Q. Amro',
   cvFileName: 'Laith_Amro_CV.pdf',
-  location: 'Amman, Jordan',
-  educationSummary: 'Al-Balqa Applied University (FET) • B.Sc. in Computer Engineering (Ranked 1st)',
-  experienceDuration: '1 yr 2 mos+',
-  bio: `Results-driven Software Engineer with proven production experience architecting robust web APIs, scalable multi-tenant architectures, and high-performance micro-frontends at QOAD. Deeply committed to Domain-Driven Design (DDD), Clean Architecture, and AI-accelerated delivery.`,
   coreStack: [
-    { name: 'Full Stack Software Engineer', icon: 'sparkles' },
     { name: 'ASP.NET Core', icon: 'dotnet' },
     { name: 'ABP Framework', icon: 'abp' },
     { name: 'Angular', icon: 'angular' },
     { name: 'Database', icon: 'database' }
-  ] as const
+  ]
 };
 
 export const SOCIAL_LINKS: readonly SocialLink[] = [
@@ -42,7 +41,7 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
     platform: 'Email',
     url: 'mailto:laithamroq@gmail.com',
     icon: 'email',
-    title: 'Direct Email (laithamroq@gmail.com)'
+    title: 'Direct Email'
   },
   {
     platform: 'Phone',
@@ -98,29 +97,32 @@ export const OUTCOME_CARDS: readonly OutcomeCard[] = [
   {
     title: 'Multi-Tenant SaaS Platforms',
     techSubtitle: 'ASP.NET Core, ABP Framework & DDD',
-    description: 'Built and delivered multi-tenant SaaS platforms using ABP Framework & EF Core. Handled tenant data separation, domain logic, and role permissions designed for scalable everyday use.',
+    descriptionHtml:
+      'Built and delivered multi-tenant SaaS platforms using <strong>ABP Framework &amp; EF Core</strong>. Handled tenant data separation, domain logic, and role permissions designed for scalable everyday use.',
     accentClass: 'text-blue-700',
     borderHoverClass: 'hover:border-blue-500'
   },
   {
     title: 'Clean Code & Rapid Delivery',
-    techSubtitle: 'SOLID, Clean Architecture & AI Sprints',
-    description: 'Delivered maintainable enterprise code following SOLID principles, Clean Architecture, and AI-assisted workflows. Accelerated sprint delivery while maintaining strict code quality.',
-    accentClass: 'text-emerald-700',
+    techSubtitle: 'Turning Business Needs into Scalable Software',
+    descriptionHtml:
+      'Working closely with product teams and stakeholders to understand real business needs. Quick at diagnosing and resolving complex issues while writing clean, maintainable code built to scale.',
+    accentClass: 'text-emerald-600',
     borderHoverClass: 'hover:border-emerald-500'
   },
   {
-    title: 'High-Performance Micro-Frontends',
-    techSubtitle: 'Angular +40 Pages & Telemetry',
-    description: 'Re-engineered legacy monolithic interfaces into modular Angular Micro-Frontends. Slashing module load times by ~95% (20s down to 1s) for real-time fleet telemetry.',
-    accentClass: 'text-purple-700',
+    title: '20s → 1s Load Time (~95% Faster)',
+    techSubtitle: 'Modernizing Large Systems with Angular Micro-Frontends',
+    descriptionHtml:
+      'Split 40+ pages from an old monolithic system into fast, modular Angular Micro-Frontends. Reduced module load time from <strong>20 seconds down to 1 second</strong>, making the app much faster for users.',
+    accentClass: 'text-purple-600',
     borderHoverClass: 'hover:border-purple-500'
   }
 ];
 
 export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   {
-    id: 'full-stack',
+    id: 'fullstack',
     title: 'Full Stack Development',
     subtitle: 'Core Frameworks & Languages',
     icon: 'development',
@@ -137,8 +139,8 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   },
   {
     id: 'architecture',
-    title: 'Software Architecture & Design',
-    subtitle: 'Scalable Systems & Patterns',
+    title: 'Architecture & Engineering',
+    subtitle: 'System Design & Principles',
     icon: 'architecture',
     skills: [
       { name: 'Clean Architecture', icon: 'clean-arch' },
@@ -152,9 +154,9 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     ]
   },
   {
-    id: 'data-infra',
-    title: 'Databases & Infrastructure',
-    subtitle: 'Data Persistence & Distributed Messaging',
+    id: 'integrations',
+    title: 'Integrations & Databases',
+    subtitle: 'Persistence & Message Brokers',
     icon: 'database',
     skills: [
       { name: 'SQL Server (T-SQL)', icon: 'sql-server' },
@@ -168,9 +170,9 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     ]
   },
   {
-    id: 'qa',
-    title: 'Quality Assurance & Testing',
-    subtitle: 'Verification, Diagnosis & Automation',
+    id: 'testing',
+    title: 'Testing & Automation',
+    subtitle: 'Quality Assurance & Diagnostics',
     icon: 'testing',
     skills: [
       { name: 'Unit & Functional Testing', icon: 'unit-test' },
@@ -183,9 +185,9 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   },
   {
     id: 'devops',
-    title: 'DevOps & Collaboration',
-    subtitle: 'Version Control, CI/CD & Agile',
-    icon: 'deployment',
+    title: 'Tools & Process',
+    subtitle: 'DevOps & Agile Collaboration',
+    icon: 'git',
     skills: [
       { name: 'Git / GitHub / GitLab', icon: 'git' },
       { name: 'Azure DevOps CI/CD', icon: 'azure-devops' },
@@ -194,9 +196,9 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
     ]
   },
   {
-    id: 'ai-automation',
-    title: 'AI & Developer Productivity',
-    subtitle: 'Agentic Workflows & Tool Augmentation',
+    id: 'ai',
+    title: 'AI-Assisted Development',
+    subtitle: 'Velocity & Agentic Systems',
     icon: 'ai-agent',
     skills: [
       { name: 'Agentic Workflows', icon: 'ai-agent' },
@@ -207,220 +209,231 @@ export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   }
 ];
 
-export const WORK_EXPERIENCES: readonly WorkExperience[] = [
+export const WORK_EXPERIENCE: readonly WorkExperience[] = [
   {
-    role: 'Software Engineer',
+    roleTitle: 'Software Engineer',
     company: 'QOAD',
     location: 'Amman, Jordan',
     period: '09/2025 – Present',
-    duration: '1 yr 2 mos',
+    durationText: '1 yr 2 mos',
     isCurrent: true,
-    achievements: [
+    bulletPoints: [
       'Enterprise SaaS & Fleet Systems: Engineering multi-tenant SaaS platforms and live GPS telemetry features using ASP.NET Core, ABP Framework, and SQL Server following Domain-Driven Design (DDD).',
-      'Micro-Frontend Migration (+40 Pages): Rebuilt legacy tracking monolith into Angular Micro-Frontends, slashing module load time by ~95% (20s down to 1s).',
-      'Custom GPS Tracking System: Architected end-to-end vehicle tracking system supporting real-time tracking, live command sending, and historical route playback.',
-      'Hardware-Software Integration: Engineered multi-device IoT telemetry ingestion pipelines with Redis caching, RabbitMQ message queues, and background services.'
+      'Micro-Frontend Migration (+40 Pages): Rebuilt legacy tracking monolith into Angular Micro-Frontends, slashing module load time by ~95% (20s down to 1s).'
+    ],
+    techStack: [
+      { name: 'ASP.NET Core', icon: 'dotnet' },
+      { name: 'Angular', icon: 'angular' },
+      { name: 'ABP Framework', icon: 'abp' },
+      { name: 'Micro-Frontends', icon: 'micro-frontend' },
+      { name: 'SQL Server', icon: 'sql-server' },
+      { name: 'RabbitMQ', icon: 'rabbitmq' },
+      { name: 'DDD', icon: 'ddd' }
     ]
   },
   {
-    role: 'Computer Engineering Department Assistant',
-    company: 'Al-Balqa Applied University (FET)',
+    roleTitle: 'Full Stack .NET Developer Intern',
+    company: 'QOAD',
     location: 'Amman, Jordan',
-    period: '09/2024 – 02/2025',
-    duration: '6 mos',
+    period: '05/2025 – 08/2025',
+    durationText: '4 mos',
     isCurrent: false,
-    achievements: [
-      'Academic Leadership: Nominated by department leadership based on 1st-in-class standing (GPA: 3.84/4.00) to support collegiate software labs and technical coursework.',
-      'Lab Instruction: Mentored students in Object-Oriented Programming (OOP), Data Structures, Algorithms, and Software Engineering best practices.'
+    bulletPoints: [
+      'Student Examination Management System: Developed full-stack examination portal using ASP.NET Web API, EF Core, SQL Server, and Angular with anti-duplicate submission validation.',
+      'Third-Party REST API Integration: Integrated external hotel booking REST APIs handling access token authentication, headers, and response payload mapping.'
+    ],
+    techStack: [
+      { name: 'C# (.NET)', icon: 'csharp' },
+      { name: 'ASP.NET Web API', icon: 'dotnet' },
+      { name: 'EF Core', icon: 'ef-core' },
+      { name: 'Angular', icon: 'angular' },
+      { name: 'SQL Server', icon: 'sql-server' },
+      { name: 'RESTful APIs', icon: 'third-party' }
     ]
   }
 ];
 
 export const PROJECTS: readonly Project[] = [
   {
-    id: 'vehicle-tracking',
     title: 'Vehicle Tracking & Fleet Monitoring System',
-    badge: 'Enterprise Production',
-    badgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
-    context: 'QOAD',
-    description: 'Real-time fleet tracking and IoT telemetry platform handling live vehicle positions, historical trip playback, and remote device commands. Modernized as an Angular Micro-Frontend (+40 pages), cutting module latency from 20s to 1s (~95% reduction).',
+    categoryBadge: 'Enterprise Production',
+    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+    org: 'QOAD',
+    description:
+      'Real-time fleet tracking and IoT telemetry platform handling live vehicle positions, historical trip playback, and remote device commands. Modernized as an Angular Micro-Frontend (+40 pages), cutting module latency from 20s to 1s (~95% reduction).',
     tags: [
       { name: 'Angular', icon: 'angular' },
       { name: 'Micro-Frontends', icon: 'micro-frontend' },
       { name: 'RxJS', icon: 'rxjs' },
-      { name: 'TypeScript', icon: 'html-css' }
+      { name: 'TypeScript', icon: 'html-css' },
+      { name: 'ASP.NET Core', icon: 'dotnet' }
     ]
   },
   {
-    id: 'fleet-rental',
-    title: 'Fleet & Rental Management System',
-    badge: 'Enterprise Production',
-    badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    context: 'QOAD',
-    description: 'Enterprise fleet management system for tracking vehicle lifecycle, maintenance schedules, driver allocations, and rental contracts with multi-tenant data isolation.',
+    title: 'Fleet & Rental Management Platform',
+    categoryBadge: 'Enterprise Production',
+    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+    org: 'QOAD',
+    description:
+      'Enterprise multi-tenant vehicle leasing and operations system built with ABP Framework. Features automated contract generation, maintenance scheduling, and payment processing.',
     tags: [
       { name: 'ASP.NET Core', icon: 'dotnet' },
       { name: 'ABP Framework', icon: 'abp' },
+      { name: 'RabbitMQ', icon: 'rabbitmq' },
+      { name: 'SQL Server', icon: 'sql-server' },
+      { name: 'Domain-Driven Design (DDD)', icon: 'ddd' }
+    ]
+  },
+  {
+    title: 'Multi-Tenant E-Restaurant Web API',
+    categoryBadge: 'Full-Stack Web API',
+    categoryBadgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+    org: 'GitHub',
+    description:
+      'Modular RESTful API engineered from the ground up for multi-tenant dining brands. Provides complete tenant-data isolation, automated discount pipelines, menu customization, and order lifecycles.',
+    tags: [
+      { name: 'ASP.NET Core', icon: 'dotnet' },
+      { name: 'C#', icon: 'csharp' },
+      { name: 'EF Core', icon: 'ef-core' },
+      { name: 'Clean Architecture', icon: 'clean-arch' }
+    ],
+    githubUrl: 'https://github.com/LaithAmro44/E-Restaurant-Web-API'
+  },
+  {
+    title: 'Academic Resources & Study-Plan Portal',
+    categoryBadge: 'Academic / Open-Source',
+    categoryBadgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    org: 'BAU - FET',
+    description:
+      'Centralized educational platform built for BAU Computer Engineering students. Aggregates curated coursework, interactive prerequisite trees, study plans, and past exams.',
+    tags: [
       { name: 'Angular', icon: 'angular' },
+      { name: 'TypeScript', icon: 'html-css' },
+      { name: 'Responsive UI', icon: 'html-css' }
+    ],
+    githubUrl: 'https://github.com/LaithAmro44/Comp.Eng',
+    liveUrl: 'https://laithamro44.github.io/Comp.Eng/'
+  },
+  {
+    title: 'Student Examination Management System',
+    categoryBadge: 'University Production',
+    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+    org: 'Epya Solutions',
+    description:
+      'High-integrity online examination platform supporting timed assessments, randomized question banks, real-time autosave, and strict anti-duplicate submission safeguards.',
+    tags: [
+      { name: 'ASP.NET Web API', icon: 'dotnet' },
+      { name: 'Angular', icon: 'angular' },
+      { name: 'EF Core', icon: 'ef-core' },
       { name: 'SQL Server', icon: 'sql-server' }
     ]
   },
   {
-    id: 'multi-tenant-api',
-    title: 'Multi-Tenant E-Restaurant Web API',
-    badge: 'Production Backend',
-    badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    context: 'GitHub Repo',
-    description: 'Production-ready ASP.NET Core Web API with multi-tenancy, clean architecture, EF Core, JWT auth, and repository pattern.',
+    title: 'Hotel Booking & Third-Party REST Engine',
+    categoryBadge: 'Integration & Microservice',
+    categoryBadgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+    org: 'Epya Solutions',
+    description:
+      'Reservation microservice integrating external hotel partner REST APIs. Implements resilient bearer token authentication, request payload transformations, and caching.',
     tags: [
       { name: 'ASP.NET Core', icon: 'dotnet' },
-      { name: 'Clean Architecture', icon: 'clean-arch' },
-      { name: 'EF Core', icon: 'ef-core' },
-      { name: 'JWT Auth', icon: 'verified' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Multi-Tenant-Restaurant-API'
+      { name: 'REST APIs', icon: 'third-party' },
+      { name: 'JSON Serialization', icon: 'third-party' }
+    ]
   },
   {
-    id: 'academic-portal',
-    title: 'Academic Resources Portal',
-    badge: 'Full Stack System',
-    badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
-    context: 'Live Platform',
-    description: 'Educational resource platform for computer engineering students featuring material sharing, search, and role-based access.',
+    title: 'Genetic Algorithm Timetabling AI',
+    categoryBadge: 'AI & Optimization',
+    categoryBadgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200',
+    org: 'GitHub',
+    description:
+      'Evolutionary optimization engine solving complex multi-variable collegiate course scheduling. Generates clash-free timetables satisfying room capacities, professor availability, and student streams.',
     tags: [
-      { name: 'ASP.NET Core', icon: 'dotnet' },
-      { name: 'Angular', icon: 'angular' },
-      { name: 'SQL Server', icon: 'sql-server' },
-      { name: 'Bootstrap', icon: 'html-css' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Academic-Portal'
-  },
-  {
-    id: 'examination-system',
-    title: 'Student Examination Management System',
-    badge: 'Enterprise Backend',
-    badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
-    context: 'Collegiate System',
-    description: 'Secure examination system handling question banks, automated grading, randomized exam generation, and student performance analytics.',
-    tags: [
-      { name: 'C# (.NET)', icon: 'csharp' },
-      { name: 'SQL Server', icon: 'sql-server' },
-      { name: 'Entity Framework', icon: 'ef-core' },
-      { name: 'LINQ', icon: 'linq' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Examination-Management-System'
-  },
-  {
-    id: 'hotel-booking',
-    title: 'Hotel Booking & REST Integration System',
-    badge: 'REST API System',
-    badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-    context: 'Full Stack API',
-    description: 'Full-featured booking management system with room availability tracking, reservation lifecycles, payment integration, and customer notifications.',
-    tags: [
-      { name: 'ASP.NET Core', icon: 'dotnet' },
-      { name: 'SQL Server', icon: 'sql-server' },
-      { name: 'Swagger UI', icon: 'postman' },
-      { name: 'Clean Code', icon: 'clean-arch' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Hotel-Booking-API'
-  },
-  {
-    id: 'genetic-timetabling',
-    title: 'Genetic Timetabling AI Engine',
-    badge: 'AI & Heuristics',
-    badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
-    context: 'GitHub Repo',
-    description: 'AI-driven university timetable scheduler solving multi-constraint NP-hard conflict problems using custom Genetic Algorithms with automated room and instructor conflict resolution.',
-    tags: [
-      { name: 'C# (.NET)', icon: 'csharp' },
+      { name: 'Python', icon: 'html-css' },
       { name: 'Genetic Algorithms', icon: 'ai-agent' },
-      { name: 'Optimization', icon: 'lightning' },
-      { name: 'Heuristics', icon: 'sparkles' }
+      { name: 'Constraint Optimization', icon: 'solid' }
     ],
-    githubUrl: 'https://github.com/LaithAmro44/Genetic-Timetable-AI'
+    githubUrl: 'https://github.com/LaithAmro44/TimetablingAI'
   },
   {
-    id: 'marks-reveal',
-    title: 'MarksReveal University Automation',
-    badge: 'Automation Script',
-    badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    context: 'Open Source',
-    description: 'Automated scraping and notification system for university academic portals, providing instant grade notifications via Telegram webhooks upon publication.',
+    title: 'MarksReveal Automation Tool',
+    categoryBadge: 'Automation Tool',
+    categoryBadgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    org: 'GitHub',
+    description:
+      'Automated data retrieval and parsing utility built to streamline academic grade verification across university portals, featuring reliable session-state handling and rapid bulk extraction.',
     tags: [
-      { name: 'Python', icon: 'dev-automation' },
-      { name: 'Web Scraping', icon: 'postman' },
-      { name: 'Webhooks', icon: 'distributed-events' },
-      { name: 'Automation', icon: 'lightning' }
+      { name: 'Python', icon: 'html-css' },
+      { name: 'Web Scraping', icon: 'debugging' },
+      { name: 'Data Parsing', icon: 'dev-automation' }
     ],
     githubUrl: 'https://github.com/LaithAmro44/MarksReveal'
   },
   {
-    id: 'vendor-portal',
     title: 'Vendor Portal UI Modernization',
-    badge: 'Micro-Frontend',
-    badgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
-    context: 'QOAD',
-    description: 'Enterprise procurement vendor portal rebuilt with modern Angular, state management with RxJS, and clean component architecture.',
+    categoryBadge: 'Frontend Modernization',
+    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
+    org: 'QOAD',
+    description:
+      'Redesigned legacy enterprise supplier portals into modern, responsive SPAs. Implemented real-time dashboard analytics, exportable financial logs, and strict role-based access.',
     tags: [
       { name: 'Angular', icon: 'angular' },
-      { name: 'RxJS', icon: 'rxjs' },
-      { name: 'SCSS', icon: 'html-css' },
-      { name: 'REST', icon: 'api-gateway' }
+      { name: 'Tailwind CSS', icon: 'html-css' },
+      { name: 'TypeScript', icon: 'html-css' },
+      { name: 'RxJS', icon: 'rxjs' }
     ]
   },
   {
-    id: 'registration-automation',
-    title: 'University Course Registration Automation',
-    badge: 'Automation & CLI',
-    badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
-    context: 'Tooling',
-    description: 'High-speed automated registration utility handling concurrent requests during high-traffic collegiate enrollment rush hours.',
+    title: 'Course Registration Automation System',
+    categoryBadge: 'Automation Script',
+    categoryBadgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    org: 'BAU - FET',
+    description:
+      'High-speed automated enrollment bot built to eliminate student schedule drops during peak university registration rushes. Executes sub-second retry logic and instant section confirmation.',
     tags: [
-      { name: 'C# (.NET)', icon: 'csharp' },
-      { name: 'HTTP Client', icon: 'api-gateway' },
-      { name: 'Concurrency', icon: 'background-jobs' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Course-Registration-Auto'
+      { name: 'Python', icon: 'html-css' },
+      { name: 'Requests', icon: 'third-party' },
+      { name: 'Session Handling', icon: 'debugging' },
+      { name: 'Multithreading', icon: 'distributed-events' }
+    ]
   },
   {
-    id: 'grade-analytics',
-    title: 'Student Grade Analytics & Reporting',
-    badge: 'Data Processing',
-    badgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200',
-    context: 'Desktop App',
-    description: 'Academic analytics desktop software for statistical analysis, grade distribution curves, and PDF report generation for faculty boards.',
+    title: 'Student Grade Management & Analytics',
+    categoryBadge: 'Analytics Tool',
+    categoryBadgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+    org: 'BAU - FET',
+    description:
+      'Collegiate grade analytics suite computing cumulative GPA forecasts, degree audit progress, grade distribution curves, and academic standing alerts.',
     tags: [
-      { name: 'C# (.NET)', icon: 'csharp' },
-      { name: 'SQL Server', icon: 'sql-server' },
-      { name: 'PDF Engine', icon: 'logging' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Grade-Analytics'
+      { name: 'Java', icon: 'html-css' },
+      { name: 'Data Analytics', icon: 'ai-agent' },
+      { name: 'OOP', icon: 'solid' },
+      { name: 'GUI Design', icon: 'html-css' }
+    ]
   },
   {
-    id: 'iot-water-monitoring',
-    title: 'Embedded Water Level Telemetry System',
-    badge: 'IoT & Firmware',
-    badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    context: 'Embedded C++',
-    description: 'Microcontroller telemetry firmware reading ultrasonic sensors, driving live OLED displays, and transmitting telemetry via GSM/GPRS modules.',
+    title: 'Embedded Water Level Monitoring System',
+    categoryBadge: 'IoT & Embedded',
+    categoryBadgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
+    org: 'BAU - FET',
+    description:
+      'Real-time IoT telemetry system using ultrasonic depth sensors, microcontroller firmware, and wireless alert relays to prevent industrial reservoir overflow and pump dry-run damage.',
     tags: [
-      { name: 'C / C++', icon: 'csharp' },
-      { name: 'IoT Telemetry', icon: 'distributed-events' },
-      { name: 'Embedded', icon: 'dev-automation' }
-    ],
-    githubUrl: 'https://github.com/LaithAmro44/Water-Level-Telemetry'
+      { name: 'C/C++', icon: 'html-css' },
+      { name: 'Arduino / ESP32', icon: 'dev-automation' },
+      { name: 'IoT Telemetry', icon: 'background-jobs' },
+      { name: 'Hardware Sensors', icon: 'microservices' }
+    ]
   }
 ];
 
 export const ACADEMIC_DEGREE: AcademicDegree = {
   title: 'B.Sc. in Computer Engineering',
-  major: 'Computer Systems, Software Engineering & Network Architecture',
   rank: 'Ranked 1st',
-  gpa: '3.84 / 4.00',
+  gpa: 'GPA: 3.84',
   university: 'Al-Balqa Applied University',
   faculty: 'Faculty of Engineering & Technology (FET)',
-  honors: "Dean's Honor Recognition",
+  honors: "Dean's Honor",
   period: '2021 – 2025',
   icon: 'academic-cap'
 };
@@ -431,14 +444,20 @@ export const CERTIFICATIONS: readonly Certification[] = [
     issuer: 'Anthropic',
     details: 'Agentic Workflows & LLM Architecture',
     date: 'Oct 2026',
-    icon: 'sparkles'
+    icon: 'sparkles',
+    iconBgClass: 'bg-amber-50',
+    iconTextClass: 'text-amber-700',
+    iconBorderClass: 'border-amber-200/80'
   },
   {
     title: 'Mastering ASP.NET Core: Production APIs',
     issuer: 'Metigator',
     details: 'Eng. Issam Abdelnabi',
     date: 'May 2026',
-    icon: 'lightning'
+    icon: 'lightning',
+    iconBgClass: 'bg-emerald-50',
+    iconTextClass: 'text-emerald-700',
+    iconBorderClass: 'border-emerald-200/80'
   }
 ];
 
@@ -447,12 +466,18 @@ export const HONORS_CONTESTS: readonly HonorContest[] = [
     title: 'Shadow Code • 1st Place (National Champion & Top Solver)',
     details: 'IEEE BAU CS • Competing against 30+ university teams across Jordan',
     date: 'May 2025',
-    icon: 'trophy'
+    icon: 'trophy',
+    iconBgClass: 'bg-amber-50',
+    iconTextClass: 'text-amber-700',
+    iconBorderClass: 'border-amber-200/80'
   },
   {
     title: 'Code Conundrum Challenge • 3rd Place',
     details: 'ZerOne • Collegiate Programming Competition',
     date: 'Mar 2024',
-    icon: 'shield-check'
+    icon: 'shield-check',
+    iconBgClass: 'bg-slate-100',
+    iconTextClass: 'text-slate-600',
+    iconBorderClass: 'border-slate-200/80'
   }
 ];

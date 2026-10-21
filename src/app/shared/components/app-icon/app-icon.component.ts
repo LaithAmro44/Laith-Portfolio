@@ -6,14 +6,7 @@ import { SVG_ICONS } from '../../../core/data/svg-icons.data';
 @Component({
   selector: 'app-icon',
   standalone: true,
-  template: `
-    @if (svg(); as content) {
-      <span
-        [class]="wrapperClasses()"
-        [innerHTML]="content">
-      </span>
-    }
-  `
+  templateUrl: './app-icon.component.html'
 })
 export class AppIconComponent {
   private sanitizer = inject(DomSanitizer);

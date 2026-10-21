@@ -91,41 +91,35 @@ export interface SdlcStep {
 export interface OutcomeCard {
   readonly title: string;
   readonly techSubtitle: string;
-  readonly description: string;
+  readonly descriptionHtml: string;
   readonly accentClass: string;
   readonly borderHoverClass: string;
 }
 
 export interface WorkExperience {
-  readonly role: string;
+  readonly roleTitle: string;
   readonly company: string;
   readonly location: string;
   readonly period: string;
-  readonly duration: string;
+  readonly durationText: string;
   readonly isCurrent: boolean;
-  readonly achievements: readonly string[];
-}
-
-export interface ProjectTag {
-  readonly name: string;
-  readonly icon: IconName;
+  readonly bulletPoints: readonly string[];
+  readonly techStack: readonly { name: string; icon: IconName }[];
 }
 
 export interface Project {
-  readonly id: string;
   readonly title: string;
-  readonly badge: string;
-  readonly badgeColor: string;
-  readonly context: string;
+  readonly categoryBadge: string;
+  readonly categoryBadgeColor: string;
+  readonly org: string;
   readonly description: string;
-  readonly tags: readonly ProjectTag[];
+  readonly tags: readonly { name: string; icon: IconName }[];
   readonly githubUrl?: string;
-  readonly liveDemoUrl?: string;
+  readonly liveUrl?: string;
 }
 
 export interface AcademicDegree {
   readonly title: string;
-  readonly major: string;
   readonly rank: string;
   readonly gpa: string;
   readonly university: string;
@@ -141,12 +135,24 @@ export interface Certification {
   readonly details: string;
   readonly date: string;
   readonly icon: IconName;
+  readonly iconBgClass: string;
+  readonly iconTextClass: string;
+  readonly iconBorderClass: string;
 }
 
 export interface HonorContest {
   readonly title: string;
   readonly details: string;
   readonly date: string;
+  readonly icon: IconName;
+  readonly iconBgClass: string;
+  readonly iconTextClass: string;
+  readonly iconBorderClass: string;
+}
+
+export interface NavSection {
+  readonly id: string;
+  readonly label: string;
   readonly icon: IconName;
 }
 
@@ -157,8 +163,15 @@ export interface SocialLink {
   readonly title: string;
 }
 
-export interface NavSection {
-  readonly id: string;
-  readonly label: string;
-  readonly icon: IconName;
+export interface HeroData {
+  readonly name: string;
+  readonly title: string;
+  readonly subtitle: string;
+  readonly activeStatus: string;
+  readonly currentRoleText: string;
+  readonly avatarUrl: string;
+  readonly linkedInUrl: string;
+  readonly linkedInDisplayName: string;
+  readonly cvFileName: string;
+  readonly coreStack: readonly { name: string; icon: IconName }[];
 }
