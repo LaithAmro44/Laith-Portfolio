@@ -11,17 +11,15 @@
 </div>
 
 <!-- Main Website Container -->
-<div class="w-full relative z-10 transition-all duration-300 min-h-screen flex flex-col justify-between">
-  <div>
-    <app-header></app-header>
-    <main>
-      <app-hero></app-hero>
-      <app-about></app-about>
-      <app-skills></app-skills>
-      <app-experience></app-experience>
-      <app-projects></app-projects>
-      <app-academics></app-academics>
-    </main>
-  </div>
+<div id="mainSiteContainer" class="w-full relative z-10 transition-all duration-300 min-h-screen flex flex-col justify-between">
+  <app-header></app-header>
+  <main class="w-full flex-1">
+    <app-hero></app-hero>
+    <app-about></app-about>
+    <app-skills></app-skills>
+    <app-experience></app-experience>
+    <app-projects></app-projects>
+    <app-academics></app-academics>
+  </main>
   <app-footer></app-footer>
 </div>

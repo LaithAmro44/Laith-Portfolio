@@ -31,7 +31,7 @@ app-footer {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 64px;
 }
 
 html, body {
@@ -194,7 +194,8 @@ html, body {
   color: #0284c7 !important;
 }
 .nav-item:hover svg,
-.nav-item:hover app-icon {
+.nav-item:hover app-icon,
+.nav-item:hover app-icon span {
   color: #0284c7 !important;
 }
 .nav-item:hover .nav-underline {
@@ -206,7 +207,8 @@ html, body {
   font-weight: 700 !important;
 }
 .nav-item.nav-active svg,
-.nav-item.nav-active app-icon {
+.nav-item.nav-active app-icon,
+.nav-item.nav-active app-icon span {
   color: #0284c7 !important;
 }
 .nav-item.nav-active .nav-underline {
@@ -226,7 +228,8 @@ html, body {
   border-left-color: #0284c7 !important;
 }
 .mobile-nav-item.mobile-nav-active svg,
-.mobile-nav-item.mobile-nav-active app-icon {
+.mobile-nav-item.mobile-nav-active app-icon,
+.mobile-nav-item.mobile-nav-active app-icon span {
   color: #0284c7 !important;
 }
 
