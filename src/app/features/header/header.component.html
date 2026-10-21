@@ -25,7 +25,10 @@
     <!-- Main Desktop Nav Links with Icons & Underline Progress Indicator -->
     <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-semibold text-slate-600">
       @for (link of navLinks(); track link.id) {
-        <a [href]="'#' + link.id" class="nav-item group relative py-1 px-1 flex items-center gap-1.5 transition-colors">
+        <a
+          [href]="'#' + link.id"
+          [class.nav-active]="activeSection() === link.id"
+          class="nav-item group relative py-1 px-1 flex items-center gap-1.5 transition-colors">
           <app-icon [name]="link.icon" cssClass="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors"></app-icon>
           <span>{{ link.label }}</span>
           <span class="nav-underline"></span>
@@ -50,7 +53,11 @@
   @if (mobileMenuOpen()) {
     <div class="md:hidden pt-3 pb-2 border-t border-slate-200/80 mt-3 space-y-1">
       @for (link of navLinks(); track link.id) {
-        <a [href]="'#' + link.id" (click)="closeMobileMenu()" class="mobile-nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700 transition">
+        <a
+          [href]="'#' + link.id"
+          (click)="closeMobileMenu()"
+          [class.mobile-nav-active]="activeSection() === link.id"
+          class="mobile-nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700 transition">
           <app-icon [name]="link.icon" cssClass="w-4 h-4 text-slate-400 shrink-0 transition-colors"></app-icon>
           <span>{{ link.label }}</span>
         </a>

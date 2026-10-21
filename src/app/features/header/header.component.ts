@@ -16,6 +16,7 @@ export class HeaderComponent {
 
   readonly mobileMenuOpen = signal<boolean>(false);
   readonly scrollProgress = signal<number>(0);
+  readonly activeSection = signal<string>('hero');
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
@@ -25,6 +26,18 @@ export class HeaderComponent {
     if (docHeight > 0) {
       this.scrollProgress.set(Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)));
     }
+
+    const sections = ['about', 'skills', 'experience', 'projects', 'academics'];
+    const scrollPos = scrollTop + 140;
+    let current = 'hero';
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const el = document.getElementById(sections[i]);
+      if (el && el.offsetTop <= scrollPos) {
+        current = sections[i];
+        break;
+      }
+    }
+    this.activeSection.set(current);
   }
 
   toggleMobileMenu(): void {

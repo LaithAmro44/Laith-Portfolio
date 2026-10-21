@@ -17,7 +17,7 @@ export const HERO_DATA: HeroData = {
   title: 'Full Stack Software Engineer',
   subtitle: 'Computer Engineer',
   activeStatus: 'ACTIVE',
-  currentRoleText: 'Software Engineer at ITG',
+  currentRoleText: 'Software Engineer at QOAD',
   avatarUrl: 'https://avatars.githubusercontent.com/u/147944575',
   linkedInUrl: 'https://www.linkedin.com/in/laith-amro/',
   linkedInDisplayName: 'Laith Q. Amro',
@@ -226,6 +226,7 @@ export const WORK_EXPERIENCE: readonly WorkExperience[] = [
       { name: 'Angular', icon: 'angular' },
       { name: 'ABP Framework', icon: 'abp' },
       { name: 'Micro-Frontends', icon: 'micro-frontend' },
+      { name: 'EF Core', icon: 'ef-core' },
       { name: 'SQL Server', icon: 'sql-server' },
       { name: 'RabbitMQ', icon: 'rabbitmq' },
       { name: 'DDD', icon: 'ddd' }
@@ -233,7 +234,7 @@ export const WORK_EXPERIENCE: readonly WorkExperience[] = [
   },
   {
     roleTitle: 'Full Stack .NET Developer Intern',
-    company: 'QOAD',
+    company: 'Epya Solutions',
     location: 'Amman, Jordan',
     period: '05/2025 – 08/2025',
     durationText: '4 mos',
@@ -255,174 +256,300 @@ export const WORK_EXPERIENCE: readonly WorkExperience[] = [
 
 export const PROJECTS: readonly Project[] = [
   {
-    title: 'Vehicle Tracking & Fleet Monitoring System',
-    categoryBadge: 'Enterprise Production',
-    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
-    org: 'QOAD',
-    description:
-      'Real-time fleet tracking and IoT telemetry platform handling live vehicle positions, historical trip playback, and remote device commands. Modernized as an Angular Micro-Frontend (+40 pages), cutting module latency from 20s to 1s (~95% reduction).',
-    tags: [
-      { name: 'Angular', icon: 'angular' },
-      { name: 'Micro-Frontends', icon: 'micro-frontend' },
-      { name: 'RxJS', icon: 'rxjs' },
-      { name: 'TypeScript', icon: 'html-css' },
-      { name: 'ASP.NET Core', icon: 'dotnet' }
+    "title": "Vehicle Tracking & Fleet Monitoring System",
+    "categoryBadge": "Enterprise Production",
+    "categoryBadgeColor": "bg-sky-50 text-sky-700 border border-sky-200",
+    "org": "QOAD",
+    "description": "Real-time fleet tracking and IoT telemetry platform handling live vehicle positions, historical trip playback, and remote device commands. Modernized as an Angular Micro-Frontend (+40 pages), cutting module latency from 20s to 1s (~95% reduction).",
+    "tags": [
+      {
+        "name": "Angular",
+        "icon": "angular"
+      },
+      {
+        "name": "Micro-Frontends",
+        "icon": "micro-frontend"
+      },
+      {
+        "name": "RxJS",
+        "icon": "rxjs"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "html-css"
+      },
+      {
+        "name": "ASP.NET Core",
+        "icon": "dotnet"
+      }
     ]
   },
   {
-    title: 'Fleet & Rental Management Platform',
-    categoryBadge: 'Enterprise Production',
-    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
-    org: 'QOAD',
-    description:
-      'Enterprise multi-tenant vehicle leasing and operations system built with ABP Framework. Features automated contract generation, maintenance scheduling, and payment processing.',
-    tags: [
-      { name: 'ASP.NET Core', icon: 'dotnet' },
-      { name: 'ABP Framework', icon: 'abp' },
-      { name: 'RabbitMQ', icon: 'rabbitmq' },
-      { name: 'SQL Server', icon: 'sql-server' },
-      { name: 'Domain-Driven Design (DDD)', icon: 'ddd' }
+    "title": "Fleet & Rental Management Platform",
+    "categoryBadge": "Enterprise SaaS",
+    "categoryBadgeColor": "bg-sky-50 text-sky-700 border border-sky-200",
+    "org": "QOAD",
+    "description": "Multi-tenant car rental and fleet SaaS platform architected with Domain-Driven Design (DDD). Engineered domain aggregates, automated role-based permissions, background notifications, and RabbitMQ event streaming.",
+    "tags": [
+      {
+        "name": "ASP.NET Core",
+        "icon": "dotnet"
+      },
+      {
+        "name": "ABP Framework",
+        "icon": "abp"
+      },
+      {
+        "name": "RabbitMQ",
+        "icon": "saas"
+      },
+      {
+        "name": "SQL Server",
+        "icon": "sql-server"
+      },
+      {
+        "name": "DDD",
+        "icon": "clean-arch"
+      }
     ]
   },
   {
-    title: 'Multi-Tenant E-Restaurant Web API',
-    categoryBadge: 'Full-Stack Web API',
-    categoryBadgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    org: 'GitHub',
-    description:
-      'Modular RESTful API engineered from the ground up for multi-tenant dining brands. Provides complete tenant-data isolation, automated discount pipelines, menu customization, and order lifecycles.',
-    tags: [
-      { name: 'ASP.NET Core', icon: 'dotnet' },
-      { name: 'C#', icon: 'csharp' },
-      { name: 'EF Core', icon: 'ef-core' },
-      { name: 'Clean Architecture', icon: 'clean-arch' }
+    "title": "Multi-Tenant E-Restaurant Web API",
+    "categoryBadge": "Open Source Architecture",
+    "categoryBadgeColor": "bg-blue-50 text-blue-700 border border-blue-200",
+    "org": "GitHub",
+    "description": "Architectural multi-tenant restaurant backend API built with ASP.NET Core and Entity Framework Core following Clean Architecture. Features strict tenant data isolation, English/Arabic localization, auditing, and automated unit tests.",
+    "tags": [
+      {
+        "name": "ASP.NET Core",
+        "icon": "dotnet"
+      },
+      {
+        "name": "C# (.NET)",
+        "icon": "csharp"
+      },
+      {
+        "name": "EF Core",
+        "icon": "ef-core"
+      },
+      {
+        "name": "Clean Architecture",
+        "icon": "clean-arch"
+      }
     ],
-    githubUrl: 'https://github.com/LaithAmro44/E-Restaurant-Web-API'
+    "githubUrl": "https://github.com/LaithAmro44/E-Restaurant-Web-API"
   },
   {
-    title: 'Academic Resources & Study-Plan Portal',
-    categoryBadge: 'Academic / Open-Source',
-    categoryBadgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    org: 'BAU - FET',
-    description:
-      'Centralized educational platform built for BAU Computer Engineering students. Aggregates curated coursework, interactive prerequisite trees, study plans, and past exams.',
-    tags: [
-      { name: 'Angular', icon: 'angular' },
-      { name: 'TypeScript', icon: 'html-css' },
-      { name: 'Responsive UI', icon: 'html-css' }
+    "title": "Academic Resources & Study-Plan Portal",
+    "categoryBadge": "Live Platform",
+    "categoryBadgeColor": "bg-emerald-50 text-emerald-700 border border-emerald-200",
+    "org": "BAU - FET",
+    "description": "Production deployed portal serving university engineering students with an interactive prerequisite study-plan tree, allowing students to navigate course pathways and access curated academic materials.",
+    "tags": [
+      {
+        "name": "Angular",
+        "icon": "angular"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "html-css"
+      },
+      {
+        "name": "SPA Architecture",
+        "icon": "code"
+      }
     ],
-    githubUrl: 'https://github.com/LaithAmro44/Comp.Eng',
-    liveUrl: 'https://laithamro44.github.io/Comp.Eng/'
+    "githubUrl": "https://github.com/LaithAmro44/Comp.Eng",
+    "liveUrl": "https://laithamro44.github.io/Comp.Eng/"
   },
   {
-    title: 'Student Examination Management System',
-    categoryBadge: 'University Production',
-    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
-    org: 'Epya Solutions',
-    description:
-      'High-integrity online examination platform supporting timed assessments, randomized question banks, real-time autosave, and strict anti-duplicate submission safeguards.',
-    tags: [
-      { name: 'ASP.NET Web API', icon: 'dotnet' },
-      { name: 'Angular', icon: 'angular' },
-      { name: 'EF Core', icon: 'ef-core' },
-      { name: 'SQL Server', icon: 'sql-server' }
+    "title": "Student Examination Management System",
+    "categoryBadge": "Full Stack Platform",
+    "categoryBadgeColor": "bg-sky-50 text-sky-700 border border-sky-200",
+    "org": "Epya Solutions",
+    "description": "Full-stack academic assessment system built during internship at Epya Solutions. Implemented course and instructor management, dynamic question banks, timed test sessions, and anti-duplicate submission validation rules.",
+    "tags": [
+      {
+        "name": "ASP.NET Web API",
+        "icon": "dotnet"
+      },
+      {
+        "name": "Entity Framework",
+        "icon": "code"
+      },
+      {
+        "name": "Angular",
+        "icon": "angular"
+      },
+      {
+        "name": "SQL Server",
+        "icon": "sql-server"
+      }
     ]
   },
   {
-    title: 'Hotel Booking & Third-Party REST Engine',
-    categoryBadge: 'Integration & Microservice',
-    categoryBadgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    org: 'Epya Solutions',
-    description:
-      'Reservation microservice integrating external hotel partner REST APIs. Implements resilient bearer token authentication, request payload transformations, and caching.',
-    tags: [
-      { name: 'ASP.NET Core', icon: 'dotnet' },
-      { name: 'REST APIs', icon: 'third-party' },
-      { name: 'JSON Serialization', icon: 'third-party' }
+    "title": "Hotel Booking & Third-Party REST Engine",
+    "categoryBadge": "API Integration",
+    "categoryBadgeColor": "bg-blue-50 text-blue-700 border border-blue-200",
+    "org": "Epya Solutions",
+    "description": "Integration module bridging enterprise reservation software with external hotel booking REST APIs. Managed bearer token lifecycles, API key security, rate limiting, and structured response transformations.",
+    "tags": [
+      {
+        "name": "ASP.NET Core",
+        "icon": "dotnet"
+      },
+      {
+        "name": "RESTful APIs",
+        "icon": "shield-check"
+      },
+      {
+        "name": "OAuth & Tokens",
+        "icon": "shield-check"
+      }
     ]
   },
   {
-    title: 'Genetic Algorithm Timetabling AI',
-    categoryBadge: 'AI & Optimization',
-    categoryBadgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200',
-    org: 'GitHub',
-    description:
-      'Evolutionary optimization engine solving complex multi-variable collegiate course scheduling. Generates clash-free timetables satisfying room capacities, professor availability, and student streams.',
-    tags: [
-      { name: 'Python', icon: 'html-css' },
-      { name: 'Genetic Algorithms', icon: 'ai-agent' },
-      { name: 'Constraint Optimization', icon: 'solid' }
+    "title": "Genetic Algorithm Timetabling AI",
+    "categoryBadge": "AI & Optimization",
+    "categoryBadgeColor": "bg-cyan-50 text-cyan-700 border border-cyan-200",
+    "org": "GitHub",
+    "description": "Intelligent scheduling optimization system solving university course timetabling constraints using Genetic Algorithms (GA). Formulated custom penalty functions and evolutionary crossover operators for zero conflict schedules.",
+    "tags": [
+      {
+        "name": "Python",
+        "icon": "code"
+      },
+      {
+        "name": "Genetic Algorithms",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Optimization",
+        "icon": "code"
+      }
     ],
-    githubUrl: 'https://github.com/LaithAmro44/TimetablingAI'
+    "githubUrl": "https://github.com/LaithAmro44/TimetablingAI"
   },
   {
-    title: 'MarksReveal Automation Tool',
-    categoryBadge: 'Automation Tool',
-    categoryBadgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    org: 'GitHub',
-    description:
-      'Automated data retrieval and parsing utility built to streamline academic grade verification across university portals, featuring reliable session-state handling and rapid bulk extraction.',
-    tags: [
-      { name: 'Python', icon: 'html-css' },
-      { name: 'Web Scraping', icon: 'debugging' },
-      { name: 'Data Parsing', icon: 'dev-automation' }
+    "title": "MarksReveal Automation Tool",
+    "categoryBadge": "Automation Tool",
+    "categoryBadgeColor": "bg-emerald-50 text-emerald-700 border border-emerald-200",
+    "org": "GitHub",
+    "description": "Python and Selenium automation tool built to securely authenticate, query, and extract student grades and academic transcripts directly from university portals, reducing manual retrieval effort.",
+    "tags": [
+      {
+        "name": "Python",
+        "icon": "code"
+      },
+      {
+        "name": "Selenium",
+        "icon": "lightning"
+      },
+      {
+        "name": "Automation",
+        "icon": "lightning"
+      }
     ],
-    githubUrl: 'https://github.com/LaithAmro44/MarksReveal'
+    "githubUrl": "https://github.com/LaithAmro44/MarksReveal"
   },
   {
-    title: 'Vendor Portal UI Modernization',
-    categoryBadge: 'Frontend Modernization',
-    categoryBadgeColor: 'bg-sky-50 text-sky-700 border-sky-200',
-    org: 'QOAD',
-    description:
-      'Redesigned legacy enterprise supplier portals into modern, responsive SPAs. Implemented real-time dashboard analytics, exportable financial logs, and strict role-based access.',
-    tags: [
-      { name: 'Angular', icon: 'angular' },
-      { name: 'Tailwind CSS', icon: 'html-css' },
-      { name: 'TypeScript', icon: 'html-css' },
-      { name: 'RxJS', icon: 'rxjs' }
+    "title": "Vendor Portal UI Modernization",
+    "categoryBadge": "Enterprise System",
+    "categoryBadgeColor": "bg-sky-50 text-sky-700 border border-sky-200",
+    "org": "QOAD",
+    "description": "Modernized vendor and supplier management screens into responsive, modular Angular components. Improved onboarding forms, purchase order tracking, and day-to-day workflow usability.",
+    "tags": [
+      {
+        "name": "Angular",
+        "icon": "angular"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "html-css"
+      },
+      {
+        "name": "RxJS",
+        "icon": "rxjs"
+      },
+      {
+        "name": "Modular UI",
+        "icon": "code"
+      }
     ]
   },
   {
-    title: 'Course Registration Automation System',
-    categoryBadge: 'Automation Script',
-    categoryBadgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    org: 'BAU - FET',
-    description:
-      'High-speed automated enrollment bot built to eliminate student schedule drops during peak university registration rushes. Executes sub-second retry logic and instant section confirmation.',
-    tags: [
-      { name: 'Python', icon: 'html-css' },
-      { name: 'Requests', icon: 'third-party' },
-      { name: 'Session Handling', icon: 'debugging' },
-      { name: 'Multithreading', icon: 'distributed-events' }
+    "title": "Course Registration Automation System",
+    "categoryBadge": "Automation Bot",
+    "categoryBadgeColor": "bg-emerald-50 text-emerald-700 border border-emerald-200",
+    "org": "BAU - FET",
+    "description": "Desktop automation tool created in Python with Selenium and Tkinter. Automatically checks lecture seat openings during enrollment rush hours and sends instant email status updates.",
+    "tags": [
+      {
+        "name": "Python",
+        "icon": "code"
+      },
+      {
+        "name": "Selenium",
+        "icon": "lightning"
+      },
+      {
+        "name": "Tkinter GUI",
+        "icon": "code"
+      },
+      {
+        "name": "Web Automation",
+        "icon": "lightning"
+      }
     ]
   },
   {
-    title: 'Student Grade Management & Analytics',
-    categoryBadge: 'Analytics Tool',
-    categoryBadgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-    org: 'BAU - FET',
-    description:
-      'Collegiate grade analytics suite computing cumulative GPA forecasts, degree audit progress, grade distribution curves, and academic standing alerts.',
-    tags: [
-      { name: 'Java', icon: 'html-css' },
-      { name: 'Data Analytics', icon: 'ai-agent' },
-      { name: 'OOP', icon: 'solid' },
-      { name: 'GUI Design', icon: 'html-css' }
+    "title": "Student Grade Management & Analytics",
+    "categoryBadge": "Desktop Application",
+    "categoryBadgeColor": "bg-indigo-50 text-indigo-700 border border-indigo-200",
+    "org": "BAU - FET",
+    "description": "Desktop grading software built using Java (Swing) to record course grades, validate entry ranges, and compute key class statistics like class averages, highest scores, and GPA distributions.",
+    "tags": [
+      {
+        "name": "Java",
+        "icon": "code"
+      },
+      {
+        "name": "Java Swing",
+        "icon": "code"
+      },
+      {
+        "name": "Statistics",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Data Validation",
+        "icon": "code"
+      }
     ]
   },
   {
-    title: 'Embedded Water Level Monitoring System',
-    categoryBadge: 'IoT & Embedded',
-    categoryBadgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
-    org: 'BAU - FET',
-    description:
-      'Real-time IoT telemetry system using ultrasonic depth sensors, microcontroller firmware, and wireless alert relays to prevent industrial reservoir overflow and pump dry-run damage.',
-    tags: [
-      { name: 'C/C++', icon: 'html-css' },
-      { name: 'Arduino / ESP32', icon: 'dev-automation' },
-      { name: 'IoT Telemetry', icon: 'background-jobs' },
-      { name: 'Hardware Sensors', icon: 'microservices' }
+    "title": "Embedded Water Level Monitoring System",
+    "categoryBadge": "IoT & Embedded",
+    "categoryBadgeColor": "bg-teal-50 text-teal-700 border border-teal-200",
+    "org": "BAU - FET",
+    "description": "Microcontroller-based tank level monitor using an ultrasonic distance sensor. Calculates water capacity percentages, displays live levels on an LCD screen, and simulates circuits in Proteus.",
+    "tags": [
+      {
+        "name": "Embedded C",
+        "icon": "api-gateway"
+      },
+      {
+        "name": "Microcontrollers",
+        "icon": "code"
+      },
+      {
+        "name": "Proteus Simulation",
+        "icon": "code"
+      },
+      {
+        "name": "Ultrasonic Sensors",
+        "icon": "api-gateway"
+      }
     ]
   }
 ];

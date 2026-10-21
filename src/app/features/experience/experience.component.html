@@ -1,7 +1,7 @@
 <section id="experience" class="py-16 sm:py-20 px-4 sm:px-6 border-t border-slate-300/80 bg-white/70 relative">
   <div class="max-w-4xl mx-auto">
     
-    <!-- Header: Centered & Clean -->
+    <!-- Header: Centered & Clean like Section 2 & 3 -->
     <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
       <div class="text-xs font-mono-code uppercase tracking-widest text-sky-700 font-bold">Work History</div>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -14,7 +14,7 @@
       @for (job of experiences(); track job.roleTitle) {
         <div class="relative">
           <!-- Exact Horizontally Centered Node Aligned with Title -->
-          <div [class]="job.isCurrent ? 'absolute -left-[27px] sm:-left-[33px] top-6 w-3.5 h-3.5 rounded-full bg-sky-600 ring-4 ring-[#ebf1f7] pulse-dot' : 'absolute -left-[27px] sm:-left-[33px] top-6 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-[#ebf1f7]'"></div>
+          <div [class]="job.isCurrent ? 'absolute -left-[27px] sm:-left-[33px] top-6 w-3.5 h-3.5 rounded-full bg-sky-600 ring-4 ring-[#ebf1f7] pulse-dot' : 'absolute -left-[27px] sm:-left-[33px] top-6 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white shadow-xs'"></div>
           
           <div class="spotlight-card p-5 sm:p-6 rounded-2xl bg-white border border-slate-300 space-y-4 shadow-sm hover:border-sky-400 transition duration-200">
             

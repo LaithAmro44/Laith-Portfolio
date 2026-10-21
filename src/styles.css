@@ -5,8 +5,28 @@
 @tailwind utilities;
 
 /* ======================================================== */
-/* GLOBAL DESIGN SYSTEM & UNIFIED STYLES                     */
-/* (No internal component CSS - 100% centralized)           */
+/* 1. ANGULAR CUSTOM ELEMENT HOST DISPLAY RULES              */
+/* Critical: Prevents layout breaks and baseline shifts     */
+/* ======================================================== */
+
+app-icon {
+  display: contents;
+}
+
+app-header,
+app-hero,
+app-about,
+app-skills,
+app-experience,
+app-projects,
+app-academics,
+app-footer {
+  display: block;
+  width: 100%;
+}
+
+/* ======================================================== */
+/* 2. BASE DESIGN SYSTEM & SCROLLBAR                         */
 /* ======================================================== */
 
 html {
@@ -24,7 +44,7 @@ html, body {
 }
 
 .font-mono-code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Custom sleek balanced scrollbar */
@@ -43,63 +63,174 @@ html, body {
   display: none;
 }
 
+/* Background Canvas */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Architectural Grid Pattern on Balanced Titanium Slate */
+.bg-grid-pattern {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Ambient Drifting Gradient Glow Orbs */
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(50px, -35px) scale(1.08); }
+  66% { transform: translate(-35px, 25px) scale(0.95); }
+}
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-45px, 40px) scale(0.96); }
+  66% { transform: translate(35px, -25px) scale(1.08); }
+}
+.orb-1 {
+  animation: floatOrb1 26s ease-in-out infinite;
+}
+.orb-2 {
+  animation: floatOrb2 30s ease-in-out infinite;
+}
+
 /* Glassmorphism Navigation */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 /* Floating Card Animation */
-@keyframes floatGentle {
+@keyframes subtleFloat {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-6px); }
 }
 .floating-card {
-  animation: floatGentle 5s ease-in-out infinite;
+  animation: subtleFloat 6s ease-in-out infinite;
 }
 
 /* Pulsing Status Dot */
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.15); opacity: 0.85; }
-}
 .pulse-dot {
-  animation: pulseGlow 2.5s infinite;
+  box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.5);
+  animation: pulseDot 2.4s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+@keyframes pulseDot {
+  to { box-shadow: 0 0 0 7px rgba(2, 132, 199, 0); }
 }
 
-/* Architectural Grid Pattern */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+/* Interactive Spotlight Card */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(550px circle at var(--mouse-x, -600px) var(--mouse-y, -600px), rgba(2, 132, 199, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+.spotlight-card:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8;
+  box-shadow: 0 16px 32px -10px rgba(15, 23, 42, 0.1), 0 0 18px -6px rgba(2, 132, 199, 0.12);
 }
 
-/* Nav Item Hover Underline */
+/* Micro-Elevation Shadow Utilities */
+.shadow-xs {
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+}
+.shadow-2xs {
+  box-shadow: 0 1px 1px 0 rgba(15, 23, 42, 0.03);
+}
+
+/* Skill Chip Hover */
+.skill-chip {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skill-chip:hover {
+  border-color: #0284c7;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(2, 132, 199, 0.15);
+}
+
+/* Header Active Navigation Underline */
 .nav-item {
   position: relative;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease-in-out;
 }
-.nav-underline {
+.nav-item .nav-underline {
   position: absolute;
-  bottom: -2px;
+  bottom: -5px;
   left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #0284c7;
-  transition: width 0.25s ease;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #0ea5e9, #2563eb);
   border-radius: 9999px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out;
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.5);
 }
-.nav-item:hover .nav-underline,
-.nav-item.active .nav-underline {
-  width: 100%;
+.nav-item:hover {
+  color: #0284c7 !important;
 }
-.nav-item.active {
+.nav-item:hover svg,
+.nav-item:hover app-icon {
+  color: #0284c7 !important;
+}
+.nav-item:hover .nav-underline {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+.nav-item.nav-active {
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+}
+.nav-item.nav-active svg,
+.nav-item.nav-active app-icon {
+  color: #0284c7 !important;
+}
+.nav-item.nav-active .nav-underline {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+/* Mobile Drawer Active Navigation Item */
+.mobile-nav-item {
+  border-left: 3px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-nav-item.mobile-nav-active {
+  background-color: #f0f9ff !important;
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+  border-left-color: #0284c7 !important;
+}
+.mobile-nav-item.mobile-nav-active svg,
+.mobile-nav-item.mobile-nav-active app-icon {
   color: #0284c7 !important;
 }
 
-/* Unified Shared Buttons */
+/* Shared Buttons Utilities */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -159,17 +290,4 @@ html, body {
   color: #0f172a;
   border-color: #0284c7;
   transform: translateY(-2px);
-}
-
-/* Spotlight Card Base */
-.spotlight-card {
-  position: relative;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 1rem;
-  transition: all 0.2s ease;
-}
-.spotlight-card:hover {
-  border-color: #38bdf8;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }

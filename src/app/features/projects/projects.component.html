@@ -48,26 +48,31 @@
 
           <!-- Links Bar (if any) -->
           @if (project.githubUrl || project.liveUrl) {
-            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2 relative z-10">
-              <div class="flex items-center gap-2">
-                @if (project.githubUrl) {
+            <div class="pt-3 border-t border-slate-100 relative z-10">
+              @if (project.githubUrl && project.liveUrl) {
+                <div class="grid grid-cols-2 gap-2">
                   <a
                     [href]="project.githubUrl"
                     target="_blank"
-                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition shadow-xs">
+                    class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition duration-150">
                     <app-icon name="github" cssClass="w-3.5 h-3.5"></app-icon>
-                    View Code on GitHub
+                    <span>GitHub</span>
                   </a>
-                }
-              </div>
-
-              @if (project.liveUrl) {
+                  <a
+                    [href]="project.liveUrl"
+                    target="_blank"
+                    class="py-2.5 rounded-xl bg-sky-50 text-sky-700 border border-sky-200 hover:bg-sky-100 text-xs font-bold flex items-center justify-center gap-1.5 transition duration-150">
+                    <app-icon name="external-link" cssClass="w-3.5 h-3.5"></app-icon>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              } @else if (project.githubUrl) {
                 <a
-                  [href]="project.liveUrl"
+                  [href]="project.githubUrl"
                   target="_blank"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-600 text-white text-xs font-bold hover:bg-sky-700 transition shadow-xs">
-                  <app-icon name="external-link" cssClass="w-3.5 h-3.5"></app-icon>
-                  Live Demo
+                  class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-xs transition duration-150">
+                  <app-icon name="github" cssClass="w-4 h-4"></app-icon>
+                  <span>View on GitHub</span>
                 </a>
               }
             </div>
