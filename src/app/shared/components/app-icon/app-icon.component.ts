@@ -19,7 +19,7 @@ export class AppIconComponent {
   });
 
   readonly svg = computed<SafeHtml>(() => {
-    const raw = SVG_ICONS[this.name()];
+    const raw = (SVG_ICONS as Record<string, string>)[this.name()];
     if (!raw) return '';
     return this.sanitizer.bypassSecurityTrustHtml(raw);
   });

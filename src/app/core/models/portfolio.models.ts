@@ -64,7 +64,13 @@ export type IconName =
   | 'shield-check'
   | 'sparkles'
   | 'academic-cap'
-  | 'lightning';
+  | 'lightning'
+  | 'arrow-up'
+  | 'scroll-progress-ring'
+  | 'menu'
+  | 'close'
+  | 'linkedin'
+  | (string & {});
 
 export interface SkillItem {
   readonly name: string;

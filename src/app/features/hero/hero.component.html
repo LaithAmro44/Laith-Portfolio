@@ -2,21 +2,18 @@
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
-      <!-- Left Column: Bio & Intro -->
-      <div class="lg:col-span-7 space-y-6">
+      <!-- Left Column: Bio & Intro (Centered on Mobile/Tablet, Left-aligned on Desktop) -->
+      <div class="lg:col-span-7 space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
         
-        <div>
-          <div class="flex items-center gap-3 flex-wrap">
+        <div class="w-full flex flex-col items-center lg:items-start">
+          <div class="flex items-center justify-center lg:justify-start">
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]">
               {{ hero().name }}
             </h1>
-            <span class="inline-flex items-center text-[#0077b5] shrink-0" title="LinkedIn Verified Professional">
-              <app-icon name="verified" cssClass="w-8 h-8 sm:w-10 sm:h-10"></app-icon>
-            </span>
           </div>
 
           <!-- Professional Roles & Core Stack Chips -->
-          <div class="mt-4 flex flex-wrap items-center gap-2 sm:gap-2.5">
+          <div class="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5">
             
             <!-- Role: Full Stack Software Engineer -->
             <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs sm:text-sm font-bold shadow-xs hover:border-sky-400 transition">
@@ -51,8 +48,8 @@
           </div>
         </div>
 
-        <!-- Actions: Direct Download CV + Quick Contact & Code Icons -->
-        <div class="flex flex-wrap items-center gap-3 pt-2">
+        <!-- Actions: Direct Download CV + Quick Contact & Code Icons (Centered on Mobile) -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
           <a
             [href]="hero().cvFileName"
             target="_blank"
@@ -62,7 +59,7 @@
             Download CV (PDF)
           </a>
 
-          <div class="flex items-center gap-2 pl-1">
+          <div class="flex items-center gap-2">
             <a
               href="https://github.com/LaithAmro44"
               target="_blank"
@@ -117,7 +114,7 @@
                   [href]="hero().linkedInUrl"
                   target="_blank"
                   class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/10 hover:bg-[#0077b5]/15 border border-[#0077b5]/30 text-[#0077b5] font-bold text-xs transition duration-200 group shadow-xs">
-                  <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.65 1.65 0 1 0 1.65 1.65A1.66 1.66 0 0 0 7.83 6.6Z"/></svg>
+                  <app-icon name="linkedin" cssClass="w-4 h-4"></app-icon>
                   <span>{{ hero().linkedInDisplayName }}</span>
                 </a>
               </div>

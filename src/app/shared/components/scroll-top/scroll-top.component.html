@@ -1,0 +1,26 @@
+<button
+  type="button"
+  (click)="scrollToTop()"
+  [style.--scroll-dashoffset]="dashOffset"
+  [class.opacity-100]="isVisible"
+  [class.translate-y-0]="isVisible"
+  [class.pointer-events-auto]="isVisible"
+  [class.opacity-0]="!isVisible"
+  [class.translate-y-4]="!isVisible"
+  [class.pointer-events-none]="!isVisible"
+  class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/95 backdrop-blur-md text-slate-700 hover:text-sky-600 shadow-xl hover:shadow-2xl border border-slate-200/90 transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
+  title="Back to top"
+  aria-label="Back to top">
+
+  <!-- Dynamic Circular Progress Ring via app-icon -->
+  <app-icon
+    name="scroll-progress-ring"
+    cssClass="absolute inset-0 w-full h-full pointer-events-none">
+  </app-icon>
+
+  <!-- Crisp Center Upward Arrow via app-icon -->
+  <app-icon
+    name="arrow-up"
+    cssClass="w-4 h-4 sm:w-4.5 sm:h-4.5 text-slate-700 group-hover:text-sky-600 transition-transform duration-200 group-hover:-translate-y-0.5">
+  </app-icon>
+</button>

@@ -9,7 +9,8 @@
 /* Critical: Prevents layout breaks and baseline shifts     */
 /* ======================================================== */
 
-app-icon {
+app-icon,
+app-scroll-top {
   display: contents;
 }
 
@@ -61,6 +62,14 @@ html, body {
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* Radial Progress Ring Transition */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.1s linear;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dashoffset: var(--scroll-dashoffset, 125.66);
 }
 
 /* Background Canvas */

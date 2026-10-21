@@ -9,6 +9,7 @@ import { ExperienceComponent } from './features/experience/experience.component'
 import { ProjectsComponent } from './features/projects/projects.component';
 import { AcademicsComponent } from './features/academics/academics.component';
 import { FooterComponent } from './features/footer/footer.component';
+import { ScrollTopComponent } from './shared/components/scroll-top/scroll-top.component';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ import { FooterComponent } from './features/footer/footer.component';
     ExperienceComponent,
     ProjectsComponent,
     AcademicsComponent,
-    FooterComponent
+    FooterComponent,
+    ScrollTopComponent
   ],
   templateUrl: './app.html'
 })

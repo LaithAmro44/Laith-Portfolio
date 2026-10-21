@@ -23,12 +23,13 @@
       </div>
     </a>
 
-    <!-- Main Desktop Nav Links (Zero URL hash, pure smooth scroll) -->
+    <!-- Main Desktop Nav Links (Zero URL hash) -->
     <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-semibold text-slate-600">
       @for (link of navLinks(); track link.id) {
         <a
           (click)="scrollToSection(link.id, $event)"
           [attr.data-section]="link.id"
+          [class.nav-active]="activeSection() === link.id"
           class="nav-item group relative py-1 px-1 flex items-center gap-1.5 transition-colors cursor-pointer">
           <app-icon [name]="link.icon" cssClass="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors"></app-icon>
           <span>{{ link.label }}</span>
@@ -42,9 +43,9 @@
       <!-- Mobile Hamburger Menu Button -->
       <button (click)="toggleMobileMenu()" class="md:hidden p-1.5 rounded-xl border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition" aria-label="Toggle Menu">
         @if (!mobileMenuOpen()) {
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <app-icon name="menu" cssClass="w-5 h-5"></app-icon>
         } @else {
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <app-icon name="close" cssClass="w-5 h-5"></app-icon>
         }
       </button>
     </div>
@@ -57,6 +58,7 @@
         <a
           (click)="scrollToSection(link.id, $event)"
           [attr.data-section]="link.id"
+          [class.mobile-nav-active]="activeSection() === link.id"
           class="mobile-nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700 transition cursor-pointer">
           <app-icon [name]="link.icon" cssClass="w-4 h-4 text-slate-400 shrink-0 transition-colors"></app-icon>
           <span>{{ link.label }}</span>

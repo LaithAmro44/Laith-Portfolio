@@ -23,6 +23,10 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   readonly hero = this.portfolioService.hero;
   readonly navLinks = this.portfolioService.navLinks;
   readonly mobileMenuOpen = signal<boolean>(false);
+  readonly activeSection = signal<string>('hero');
+
+  private isNavigating = false;
+  private navLockTimeout: any;
 
   private scrollHandler?: () => void;
   private resizeHandler?: () => void;
@@ -38,6 +42,9 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.navLockTimeout) {
+      clearTimeout(this.navLockTimeout);
+    }
     if (isPlatformBrowser(this.platformId)) {
       if (this.scrollHandler) window.removeEventListener('scroll', this.scrollHandler);
       if (this.resizeHandler) window.removeEventListener('resize', this.resizeHandler);
@@ -73,45 +80,32 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
       if (trackSections.length === 0) return;
 
-      // 1. Calculate realistic scroll boundaries for each section
-      const scrollThresholds = [0];
-
-      // Sections 1 through 4 (about, skills, experience, projects)
-      for (let j = 1; j < trackSections.length - 1; j++) {
-        scrollThresholds.push(Math.max(trackSections[j].offsetTop - headerOffset, 0));
-      }
-
-      // Last section (academics / Education & Awards)
-      const lastSecEl = trackSections[trackSections.length - 1];
-      const idealLastTop = lastSecEl ? lastSecEl.offsetTop - headerOffset : maxScroll - 300;
-      const lastSecScrollDistance = Math.min(
-        Math.max(lastSecEl ? lastSecEl.offsetHeight * 0.7 : 300, 260),
-        maxScroll * 0.3
-      );
-      const lastSecThreshold = Math.min(idealLastTop, maxScroll - lastSecScrollDistance);
-      scrollThresholds.push(
-        Math.max(lastSecThreshold, scrollThresholds[scrollThresholds.length - 1] + 50)
-      );
+      // 1. Calculate actual scroll boundaries for each section
+      const scrollThresholds = trackSections.map((sec, idx) => {
+        if (idx === 0) return 0;
+        return Math.max(0, sec.offsetTop - headerOffset - 25);
+      });
 
       // 2. Identify the active section index based on scroll position
       let activeIndex = 0;
-      const isNearBottom = scrollY + winHeight >= docHeight - 25;
-
-      if (isNearBottom) {
-        activeIndex = trackSections.length - 1;
-      } else {
-        for (let j = trackSections.length - 1; j >= 0; j--) {
-          if (scrollY >= scrollThresholds[j]) {
-            activeIndex = j;
-            break;
-          }
+      for (let j = trackSections.length - 1; j >= 0; j--) {
+        if (scrollY >= scrollThresholds[j]) {
+          activeIndex = j;
+          break;
         }
       }
 
       const currentSectionId = trackSections[activeIndex] ? trackSections[activeIndex].id : 'hero';
+      // Suppress intermediate flickering while smooth scroll navigation is running
+      if (!this.isNavigating) {
+        if (this.activeSection() !== currentSectionId) {
+          this.activeSection.set(currentSectionId);
+        }
+      }
 
       // 3. Compute Synchronized Progress Bar Width (aligned with Header Nav Links)
       if (mainBar) {
+        const isNearBottom = scrollY + winHeight >= docHeight - 15;
         const headerLeft = headerEl ? headerEl.getBoundingClientRect().left : 0;
         const headerWidth = headerEl ? headerEl.getBoundingClientRect().width : winWidth;
 
@@ -214,7 +208,8 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Smoothly scrolls to section without placing any hash in the URL.
+   * Smoothly navigates to section without placing any hash in the URL.
+   * Locks active tab to destination during smooth scrolling so intermediate tabs don't flicker.
    */
   scrollToSection(id: string, event?: Event): void {
     if (event) {
@@ -222,13 +217,22 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     }
     this.closeMobileMenu();
 
+    // Lock active tab to target section so smooth scroll does not flash intermediate sections
+    this.isNavigating = true;
+    this.activeSection.set(id);
+    if (this.navLockTimeout) clearTimeout(this.navLockTimeout);
+
     if (typeof window !== 'undefined') {
       const el = document.getElementById(id);
       if (el) {
+        // Measure header height using top bar for exact consistency across open/closed mobile drawer
         const headerEl = document.querySelector('header');
-        const headerHeight = headerEl ? Math.round(headerEl.getBoundingClientRect().height) : 64;
+        const topBar = headerEl ? (headerEl.querySelector('.max-w-6xl') as HTMLElement) : null;
+        const headerHeight = topBar
+          ? Math.round(topBar.getBoundingClientRect().height)
+          : (window.innerWidth >= 640 ? 65 : 61);
+
         const elementPosition = el.getBoundingClientRect().top;
-        // Perfect flush landing: section starts immediately beneath the fixed header
         const offsetPosition = Math.round(elementPosition + window.scrollY - headerHeight + 1);
 
         window.scrollTo({
@@ -242,6 +246,12 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
         history.replaceState(null, '', window.location.pathname);
       }
     }
+
+    // Release lock once smooth scrolling finishes
+    this.navLockTimeout = setTimeout(() => {
+      this.isNavigating = false;
+      this.activeSection.set(id);
+    }, 850);
   }
 
   /**
@@ -253,6 +263,10 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     }
     this.closeMobileMenu();
 
+    this.isNavigating = true;
+    this.activeSection.set('hero');
+    if (this.navLockTimeout) clearTimeout(this.navLockTimeout);
+
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -261,5 +275,10 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
         history.replaceState(null, '', window.location.pathname);
       }
     }
+
+    this.navLockTimeout = setTimeout(() => {
+      this.isNavigating = false;
+      this.activeSection.set('hero');
+    }, 850);
   }
 }
