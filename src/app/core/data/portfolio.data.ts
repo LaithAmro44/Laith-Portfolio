@@ -53,10 +53,10 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
 ];
 
 export const NAV_LINKS: readonly NavSection[] = [
-  { id: 'about', label: 'About', icon: 'sparkles' },
-  { id: 'skills', label: 'Skills', icon: 'development' },
-  { id: 'experience', label: 'Experience', icon: 'architecture' },
-  { id: 'projects', label: 'Projects', icon: 'lightning' },
+  { id: 'about', label: 'About', icon: 'user' },
+  { id: 'skills', label: 'Skills', icon: 'code' },
+  { id: 'experience', label: 'Experience', icon: 'briefcase' },
+  { id: 'projects', label: 'Projects', icon: 'folder' },
   { id: 'academics', label: 'Education & Awards', icon: 'academic-cap' }
 ];
 
