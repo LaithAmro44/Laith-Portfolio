@@ -1,15 +1,18 @@
-name: Deploy to Cloudflare Pages
+name: CI Build Verification
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    name: Build & Deploy Portfolio to Cloudflare Pages
+    name: Build & Verify Angular SSG
 
     steps:
       - name: Checkout code
@@ -26,10 +29,3 @@ jobs:
 
       - name: Build Angular SSG / Prerender
         run: npm run build
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist/laith-portfolio/browser --project-name=laith-portfolio --branch=main --commit-dirty=true
