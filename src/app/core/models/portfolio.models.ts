@@ -103,6 +103,8 @@ export interface WorkExperience {
   readonly period: string;
   readonly durationText: string;
   readonly isCurrent: boolean;
+  readonly startDate?: string;
+  readonly endDate?: string;
   readonly bulletPoints: readonly string[];
   readonly techStack: readonly { name: string; icon: IconName }[];
 }

@@ -215,7 +215,8 @@ export const WORK_EXPERIENCE: readonly WorkExperience[] = [
     company: 'QOAD',
     location: 'Amman, Jordan',
     period: '09/2025 – Present',
-    durationText: '1 yr 2 mos',
+    durationText: '1 yr 1 mo',
+    startDate: '2025-09-01',
     isCurrent: true,
     bulletPoints: [
       'Enterprise SaaS & Fleet Systems: Engineering multi-tenant SaaS platforms and live GPS telemetry features using ASP.NET Core, ABP Framework, and SQL Server following Domain-Driven Design (DDD).',
@@ -238,6 +239,8 @@ export const WORK_EXPERIENCE: readonly WorkExperience[] = [
     location: 'Amman, Jordan',
     period: '05/2025 – 08/2025',
     durationText: '4 mos',
+    startDate: '2025-05-01',
+    endDate: '2025-08-31',
     isCurrent: false,
     bulletPoints: [
       'Student Examination Management System: Developed full-stack examination portal using ASP.NET Web API, EF Core, SQL Server, and Angular with anti-duplicate submission validation.',
